@@ -10,13 +10,26 @@ const API_URL = `https://opentdb.com/api.php?amount=50&category=12`
 class App extends Component {
 
   state = {
-    questions: []
+    questions: [],
+    questionsIndex: 0
   }
+
+  displayQuestions = () => {
+    let questionsToDisplay = (this.state.questions.slice(this.state.questionsIndex, this.state.questionsIndex + 1))
+    return questionsToDisplay
+  }
+
 
   handleClick = (clickedAnswer, correctAnswer) => {
     if(correctAnswer === clickedAnswer) {
-      alert("correct!")
+      this.setState({
+        questionsIndex: this.state.questionsIndex + 1
+      })
     }
+  }
+
+  componentDidUpdate() {
+    this.displayQuestions()
   }
 
   render() {
@@ -27,7 +40,7 @@ class App extends Component {
           <h1 className="App-title">Quizzo</h1>
         </header>
 
-        <QuestionContainer questions={this.state.questions} handleClick={this.handleClick}/>
+        <QuestionContainer displayQuestions={this.displayQuestions()} handleClick={this.handleClick}/>
 
       </div>
     );

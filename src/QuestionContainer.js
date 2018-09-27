@@ -12,7 +12,7 @@ class QuestionContainer extends Component {
     return(
       <div>
         {
-          this.props.questions.map((question,idx) => {
+          this.props.displayQuestions.map((question,idx) => {
           return ([<Question key={idx} {...question} fixText={this.fixText} />,
           <Answer {...question} fixText={this.fixText} handleClick={this.props.handleClick} />])
         })
