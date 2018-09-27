@@ -1,8 +1,18 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import QuestionContainer from './QuestionContainer'
+
+const API_URL = `https://opentdb.com/api.php?amount=50&category=12`
+
+
 
 class App extends Component {
+
+  state = {
+    questions: []
+  }
+
   render() {
     return (
       <div className="App">
@@ -10,12 +20,23 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
+        <QuestionContainer questions={this.state.questions}/>
+
       </div>
     );
   }
+
+  componentDidMount(){
+    fetch(API_URL)
+    .then(response => response.json())
+    .then(data => {
+      this.setState({
+        questions: data.results
+      })
+    })
+  }
+
 }
 
 export default App;
