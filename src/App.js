@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './info.svg';
 import './App.css';
 import QuestionContainer from './QuestionContainer'
 
@@ -13,15 +13,21 @@ class App extends Component {
     questions: []
   }
 
+  handleClick = (clickedAnswer, correctAnswer) => {
+    if(correctAnswer === clickedAnswer) {
+      alert("correct!")
+    }
+  }
+
   render() {
     return (
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Quizzo</h1>
         </header>
 
-        <QuestionContainer questions={this.state.questions}/>
+        <QuestionContainer questions={this.state.questions} handleClick={this.handleClick}/>
 
       </div>
     );

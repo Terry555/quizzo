@@ -5,13 +5,11 @@ import React, { Component } from 'react';
 class Question extends Component {
   render(){
     const question = this.props.question
-    const fixApostrophe = question.split(/&#039;|&quot;|&ldquo;|&rdquo;/).join("'")
-    const fixAmpersand = fixApostrophe.split(/&amp;/).join("&")
-    const fixUmlaut = fixAmpersand.split(/&Uuml;/).join("Ü")
+    // const fixText = question.split(/&#039;|&quot;|&ldquo;|&rdquo;/).join("'").split(/&amp;/).join("&").split(/&Uuml;/).join("Ü")
+
     return(
       <div>
-          <h3>{fixUmlaut}</h3>
-
+          <h3>{this.props.fixText(this.props.question)}</h3>
       </div>
     )
   }
