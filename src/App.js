@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import logo from './info.svg';
 import './App.css';
 import QuestionContainer from './QuestionContainer'
+import Score from './Score'
 
-const API_URL = `https://opentdb.com/api.php?amount=50&category=12`
-
+const API_URL = `https://opentdb.com/api.php?amount=50&category=`
+const MUSIC_QUESTIONS = 12
+const CARTOON_QUESTIONS = 32
 
 
 class App extends Component {
 
   state = {
     questions: [],
-    questionsIndex: 0
+    questionsIndex: 0,
+    score: 0
   }
 
   displayQuestions = () => {
@@ -22,10 +25,13 @@ class App extends Component {
 
   handleClick = (clickedAnswer, correctAnswer) => {
     if(correctAnswer === clickedAnswer) {
+      this.setState ({
+        score: this.state.score + 1
+      })
+    }
       this.setState({
         questionsIndex: this.state.questionsIndex + 1
       })
-    }
   }
 
   componentDidUpdate() {
@@ -39,15 +45,15 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Quizzo</h1>
         </header>
-
         <QuestionContainer displayQuestions={this.displayQuestions()} handleClick={this.handleClick}/>
+        <Score score={this.state.score}/>
 
       </div>
     );
   }
 
   componentDidMount(){
-    fetch(API_URL)
+    fetch(API_URL + CARTOON_QUESTIONS)
     .then(response => response.json())
     .then(data => {
       this.setState({

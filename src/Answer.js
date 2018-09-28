@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 
 class Answer extends Component {
   shuffle = (array) => {
-    var ctr = array.length, temp, index;
+    let ctr = array.length, temp, index;
+    console.log(ctr)
     // While there are elements in the array
+    if (array.length > 2) {
         while (ctr > 0) {
     // Pick a random index
             index = Math.floor(Math.random() * ctr);
@@ -16,6 +18,10 @@ class Answer extends Component {
             array[index] = temp;
         }
         return array;
+    }
+    else {
+      return ["True", "False"]
+    }
   }
 
   render(){
