@@ -3,10 +3,15 @@ import logo from './info.svg';
 import './App.css';
 import QuestionContainer from './QuestionContainer'
 import Score from './Score'
+import CategoryContainer from './CategoryContainer'
+
 
 const API_URL = `https://opentdb.com/api.php?amount=50&category=`
-const MUSIC_QUESTIONS = 12
-const CARTOON_QUESTIONS = 32
+const categoryObj = [{'Books': 10, 'Film': 11}]
+
+  //
+  // [{'Books': 10}, {'Film': 11}, {'Music': 12}, {'Video_Games': 15},
+  //   {'Television': 14}, {'Geography': 22}, {'History': 23}, {'Natural_Science': 17}, {'Computers': 18}, {'Cartoons': 32}]
 
 
 class App extends Component {
@@ -45,6 +50,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Quizzo</h1>
         </header>
+
+        <CategoryContainer category={categoryObj}/>
         <QuestionContainer displayQuestions={this.displayQuestions()} handleClick={this.handleClick}/>
         <Score score={this.state.score}/>
 
@@ -53,7 +60,7 @@ class App extends Component {
   }
 
   componentDidMount(){
-    fetch(API_URL + CARTOON_QUESTIONS)
+    fetch(API_URL + '32')
     .then(response => response.json())
     .then(data => {
       this.setState({
