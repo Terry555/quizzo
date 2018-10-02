@@ -2,9 +2,14 @@ import React, { Component } from 'react';
 
 
 class Answer extends Component {
+  //
+  // state = {
+  //   answers: [this.props.wrongAnswers, this.props.rightanswer]
+  // }
+
+
   shuffle = (array) => {
     let ctr = array.length, temp, index;
-    console.log(ctr)
     // While there are elements in the array
     if (array.length > 2) {
         while (ctr > 0) {
@@ -25,12 +30,17 @@ class Answer extends Component {
   }
 
   render(){
+    console.log(this.props)
+    let newArray = [...this.props.incorrect_answers]
+    let evenNewerArray = [...newArray, this.props.correct_answer]
+    this.shuffle(evenNewerArray)
+    // this.shuffle(this.props.incorrect_answers.push(this.props.correct_answer))
+    // {this.shuffle(evenNewerArray).map(answer => <button onClick={() => this.props.handleClick(answer, this.props.correct_answer)}>{this.props.fixText(answer)}</button>)}
 
-    this.shuffle(this.props.incorrect_answers.push(this.props.correct_answer))
 
     return(
       <div>
-        {this.shuffle(this.props.incorrect_answers).map(answer => <button onClick={() => this.props.handleClick(answer, this.props.correct_answer)}>{this.props.fixText(answer)}</button>)}
+        {evenNewerArray.map(answer => <button onClick={() => this.props.handleClick(answer, this.props.correct_answer)}>{this.props.fixText(answer)}</button>)}
       </div>
     )
   }

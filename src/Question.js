@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 
 class Question extends Component {
   render(){
-    const question = this.props.question
+    // const question = this.props.question
     // const fixText = question.split(/&#039;|&quot;|&ldquo;|&rdquo;/).join("'").split(/&amp;/).join("&").split(/&Uuml;/).join("Ü")
 
     return(

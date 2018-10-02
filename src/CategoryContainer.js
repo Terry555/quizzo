@@ -5,15 +5,15 @@ import v4 from 'uuid'
 
 class CategoryContainer extends Component {
 
-  // const categoryIterator = this.props.category.map(category => {
-  //   return <Category key={v4()} {...category}/>
-  // })
 
   render() {
-    console.log(this.props.category)
+    const categoryIterator = this.props.category.map((category) => {
+      return <Category key={v4()} {...category} handleCategoryClick={this.props.handleCategoryClick}/>
+    })
+
     return(
       <div>
-        {'categoryIterator'}
+        {categoryIterator}
       </div>
     )
     }
