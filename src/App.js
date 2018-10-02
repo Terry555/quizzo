@@ -4,13 +4,15 @@ import './App.css';
 import QuestionContainer from './QuestionContainer'
 import Score from './Score'
 import CategoryContainer from './CategoryContainer'
+import QuestionCounter from './QuestionCounter'
 
 
-const API_URL = `https://opentdb.com/api.php?amount=50&category=`
-const categoryObj = [{category: 'Books', number: 10}, {category: 'Film', number: 11}]
-
-  // [{'Books': 10}, {'Film': 11}, {'Music': 12}, {'Video_Games': 15},
-  //   {'Television': 14}, {'Geography': 22}, {'History': 23}, {'Natural_Science': 17}, {'Computers': 18}, {'Cartoons': 32}]
+const API_URL = `https://opentdb.com/api.php?amount=10&category=`
+const categoryObj = [{category: 'Books', number: 10}, {category: 'Film', number: 11},
+                    {category: 'Music', number: 12}, {category: 'Video Games', number: 15},
+                    {category: 'Television', number: 14}, {category: 'Geography', number: 22},
+                    {category: 'History', number: 23}, {category: 'Natural Science', number: 17},
+                    {category: 'Computers', number: 18}, {category: 'Cartoons', number: 32}]
 
 
 class App extends Component {
@@ -19,7 +21,9 @@ class App extends Component {
     questions: [],
     questionsIndex: 0,
     score: 0,
-    cat_num: ''
+    cat_num: '',
+    clicked: false,
+    questionNumber: 1
   }
 
   displayQuestions = () => {
@@ -35,7 +39,8 @@ class App extends Component {
       })
     }
       this.setState({
-        questionsIndex: this.state.questionsIndex + 1
+        questionsIndex: this.state.questionsIndex + 1,
+        questionNumber: this.state.questionNumber + 1
       })
   }
 
@@ -47,10 +52,11 @@ class App extends Component {
   handleCategoryClick = (number, event) => {
     event.preventDefault()
     this.setState({
-      cat_num: number
+      cat_num: number,
+      clicked: true
     },()=> {
 
-    fetch('https://opentdb.com/api.php?amount=50&category=' + this.state.cat_num)
+    fetch(API_URL + this.state.cat_num)
     .then(response => response.json())
     .then(data => {
       this.setState({
@@ -68,10 +74,10 @@ class App extends Component {
           <h1 className="App-title">Quizzo</h1>
         </header>
 
-        <CategoryContainer category={categoryObj} handleCategoryClick={this.handleCategoryClick}/>
+        {this.state.clicked ? null : <CategoryContainer category={categoryObj} handleCategoryClick={this.handleCategoryClick}/>}
         <QuestionContainer displayQuestions={this.displayQuestions()} handleClick={this.handleClick}/>
-        <Score score={this.state.score}/>
-
+        {this.state.clicked ? <Score score={this.state.score} questionNumber={this.state.questionNumber}/> : null}
+        {this.state.clicked ? <QuestionCounter questionNumber={this.state.questionNumber}/> : null}
       </div>
     );
   }

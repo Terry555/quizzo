@@ -1,8 +1,14 @@
-import React, { Component } from 'react'
+import React from 'react'
 
 function Score(props) {
   return (
-    <h2>Score: {props.score} </h2>
+    <div>
+      <h2>Score: {props.score} </h2>
+      {props.questionNumber === 11 ?
+      <h2>Percent Correct: {props.score/10 * 100}%</h2> :
+      null
+      }
+    </div>
   )
 }
 

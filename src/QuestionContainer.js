@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Question from './Question'
 import Answer from './Answer'
-import v4 from 'uuid'
+// import v4 from 'uuid'
 
 class QuestionContainer extends Component {
+
   fixText = (text) => {
     return text.split(/&#039;|&quot;|&ldquo;|&rdquo;/).join("'").split(/&amp;/).join("&").split(/&Uuml;/).join("Ü")
   }
