@@ -5,14 +5,18 @@ import QuestionContainer from './QuestionContainer'
 import Score from './Score'
 import CategoryContainer from './CategoryContainer'
 import QuestionCounter from './QuestionCounter'
-
+import TopicSearch from './TopicSearch'
 
 const API_URL = `https://opentdb.com/api.php?amount=10&category=`
 const categoryObj = [{category: 'Books', number: 10}, {category: 'Film', number: 11},
                     {category: 'Music', number: 12}, {category: 'Video Games', number: 15},
                     {category: 'Television', number: 14}, {category: 'Geography', number: 22},
                     {category: 'History', number: 23}, {category: 'Natural Science', number: 17},
-                    {category: 'Computers', number: 18}, {category: 'Cartoons', number: 32}]
+                    {category: 'Computers', number: 18}, {category: 'Cartoons', number: 32},
+                    {category: 'Politics', number: 24}, {category: 'Art', number: 25},
+                    {category: 'Celebrities', number: 26}, {category: 'Animals', number: 27},
+                    {category: 'Sports', number: 21}, {category: 'Musicals/Theater', number: 13},
+                    {category: 'Comics', number: 29}, {category: 'Board Games', number: 16}]
 
 
 class App extends Component {
@@ -23,7 +27,8 @@ class App extends Component {
     score: 0,
     cat_num: '',
     clicked: false,
-    questionNumber: 1
+    questionNumber: 1,
+    searchTerm: ''
   }
 
   displayQuestions = () => {
@@ -31,6 +36,19 @@ class App extends Component {
     return questionsToDisplay
   }
 
+  handleChange = (event) => {
+    this.setState({
+      searchTerm: event.target.value
+    })
+  }
+
+  filterTopics = () => {
+    return categoryObj.filter(category => category.category.toLowerCase().includes(this.state.searchTerm.toLowerCase()))
+  }
+
+  topicsToDisplay = () => {
+    return this.state.searchTerm ? this.filterTopics() : categoryObj
+  }
 
   handleClick = (clickedAnswer, correctAnswer) => {
     if(correctAnswer === clickedAnswer) {
@@ -73,8 +91,8 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Quizzo</h1>
         </header>
-
-        {this.state.clicked ? null : <CategoryContainer category={categoryObj} handleCategoryClick={this.handleCategoryClick}/>}
+        {this.state.clicked ? null : <TopicSearch handleChange={this.handleChange} searchTerm={this.state.searchTerm}/>}
+        {this.state.clicked ? null : <CategoryContainer category={this.topicsToDisplay()} handleCategoryClick={this.handleCategoryClick}/>}
         <QuestionContainer displayQuestions={this.displayQuestions()} handleClick={this.handleClick}/>
         {this.state.clicked ? <Score score={this.state.score} questionNumber={this.state.questionNumber}/> : null}
         {this.state.clicked ? <QuestionCounter questionNumber={this.state.questionNumber}/> : null}

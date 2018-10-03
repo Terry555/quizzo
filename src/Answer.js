@@ -40,7 +40,8 @@ class Answer extends Component {
 
     return(
       <div>
-        {evenNewerArray.map(answer => <button onClick={() => this.props.handleClick(answer, this.props.correct_answer)}>{this.props.fixText(answer)}</button>)}
+        {this.shuffle(evenNewerArray).map((answer, idx) => {
+          return <button key={idx} onClick={() => this.props.handleClick(answer, this.props.correct_answer)}>{this.props.fixText(answer)}</button>})}
       </div>
     )
   }

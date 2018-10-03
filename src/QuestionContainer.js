@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Question from './Question'
 import Answer from './Answer'
-// import v4 from 'uuid'
+import v4 from 'uuid'
 
 class QuestionContainer extends Component {
 
@@ -12,7 +12,7 @@ class QuestionContainer extends Component {
   render() {
     const questionAnswerIterator = this.props.displayQuestions.map((question,idx) => {
       return ([<Question key={idx} {...question} fixText={this.fixText} />,
-      <Answer {...question} fixText={this.fixText} handleClick={this.props.handleClick} />])
+      <Answer key={v4()} {...question} fixText={this.fixText} handleClick={this.props.handleClick} />])
       })
     return(
       <div>
