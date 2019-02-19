@@ -12,10 +12,9 @@ Our motivation for Quizzo was to create a fun trivia game for people to play, an
 
 ### Screenshots:
 
-<img alt="screenshot 1" src="https://user-images.githubusercontent.com/39580513/53047840-54c24280-3461-11e9-8b30-f5d4bb03ebc6.png">
-<img alt="screenshot 2" src="https://user-images.githubusercontent.com/39580513/53048913-ddda7900-3463-11e9-89cf-84c4ab161cd2.png">
-<img alt="screenshot 3" src="https://user-images.githubusercontent.com/39580513/53048944-f6e32a00-3463-11e9-8f6d-18c49c59d93e.png">
-<img alt="screenshot 4" src="https://user-images.githubusercontent.com/39580513/53048979-06627300-3464-11e9-9f0f-b2bf09d3264c.png">
+<img alt="screenshot 1" src="https://user-images.githubusercontent.com/39580513/53051441-e8980c80-3469-11e9-87e7-32e852babb4f.png">
+<img alt="screenshot 2" src="https://user-images.githubusercontent.com/39580513/53051459-fe0d3680-3469-11e9-9d82-6a9a4838f93e.png">
+<img alt="screenshot 3" src="https://user-images.githubusercontent.com/39580513/53051473-0bc2bc00-346a-11e9-90be-dfa1d29f9d8a.png">
 
 ## Technology Used:
 
@@ -27,7 +26,7 @@ React
 
 ### Features:
 
-The user can search for any of the provided categories, and once a category is chosen will then answer ten questions. Some are multiple choice, some are yes/no. The game keeps track of the users' score, and will display three different results depending on how well the user did. 
+The user can search for any of the provided categories, and once a category is chosen will then answer ten questions. Some are multiple choice, some are yes/no. The game keeps track of the users' score, and will display three different results depending on how well the user did.
 
 ## Installation:
 

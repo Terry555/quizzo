@@ -1,21 +1,23 @@
 import React from 'react'
-import jessbad from './images/jessbad.jpg'
-import jessmedium from './images/jessmedium.jpg'
-import jessgood from './images/jessgood.jpg'
+import goldstar from './images/gold_star.svg'
+import checkmark from './images/check_mark.png'
+import thumbsdown from './images/thumbs_down.png'
+
+
 
 
 function Score(props) {
 
   const displayResults = () => {
     if ((props.score/10 * 100) > 60) {
-      return <div><h1>Jess says Great Job!</h1><img src={jessgood} alt="jess_good" width="200"/></div>
+      return <div><h1>Great Job!</h1><img src={goldstar} alt="gold_star" width="200"/></div>
     }
     else if ((props.score/10 * 100) > 30 && (props.score/10 * 100) < 70) {
-      return <div><h1> Jess says You Did Okay</h1><img src={jessmedium} alt="jess_medium" width="200"/></div>
+      return <div><h1>You Did Okay!</h1><img src={checkmark} alt="check_mark" width="200"/></div>
 
     }
     else if ((props.score/10 * 100) < 40) {
-      return <div><h1> Jess says Oops Not Good</h1><img src={jessbad} alt="jess_bad" width="200"/></div>
+      return <div><h1>Try Again!</h1><img src={thumbsdown} alt="thumbs_down" width="200"/></div>
     }
     else {
       return null
