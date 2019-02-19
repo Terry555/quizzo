@@ -8,14 +8,14 @@ function Score(props) {
 
   const displayResults = () => {
     if ((props.score/10 * 100) > 60) {
-      return <h1> Jess says Great Job! <img src={jessgood} alt="jess_good" width="200"/></h1>
+      return <div><h1>Jess says Great Job!</h1><img src={jessgood} alt="jess_good" width="200"/></div>
     }
     else if ((props.score/10 * 100) > 30 && (props.score/10 * 100) < 70) {
-      return <h1> Jess says You Did Okay <img src={jessmedium} alt="jess_medium" width="200"/></h1>
+      return <div><h1> Jess says You Did Okay</h1><img src={jessmedium} alt="jess_medium" width="200"/></div>
 
     }
     else if ((props.score/10 * 100) < 40) {
-      return <h1> Jess says Oops Not Good <img src={jessbad} alt="jess_bad" width="200"/></h1>
+      return <div><h1> Jess says Oops Not Good</h1><img src={jessbad} alt="jess_bad" width="200"/></div>
     }
     else {
       return null

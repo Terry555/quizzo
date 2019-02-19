@@ -11,8 +11,16 @@ class QuestionContainer extends Component {
 
   render() {
     const questionAnswerIterator = this.props.displayQuestions.map((question,idx) => {
-      return ([<Question key={idx} {...question} fixText={this.fixText} />,
-      <Answer key={v4()} {...question} fixText={this.fixText} handleClick={this.props.handleClick} />])
+      return (
+        [
+      <div className="questionContainer">
+        <div className='ui fluid card'>
+          <Question key={idx} {...question} fixText={this.fixText} />
+          <Answer key={v4()} {...question} fixText={this.fixText} handleClick={this.props.handleClick} />
+        </div>
+      </div>
+    ]
+      )
       })
     return(
       <div>

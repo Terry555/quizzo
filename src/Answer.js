@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Button } from 'semantic-ui-react'
 
 
 class Answer extends Component {
@@ -39,9 +40,9 @@ class Answer extends Component {
 
 
     return(
-      <div>
+      <div className='extra content'>
         {this.shuffle(evenNewerArray).map((answer, idx) => {
-          return <button key={idx} onClick={() => this.props.handleClick(answer, this.props.correct_answer)}>{this.props.fixText(answer)}</button>})}
+          return <Button basic color='blue' key={idx} onClick={() => this.props.handleClick(answer, this.props.correct_answer)}>{this.props.fixText(answer)}</Button>})}
       </div>
     )
   }
