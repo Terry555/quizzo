@@ -12,7 +12,7 @@ class CategoryContainer extends Component {
     })
 
     return(
-      <div>
+      <div className='ui cards cardContainer'>
         {categoryIterator}
       </div>
     )

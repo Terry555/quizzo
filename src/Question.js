@@ -8,8 +8,8 @@ class Question extends Component {
     // const fixText = question.split(/&#039;|&quot;|&ldquo;|&rdquo;/).join("'").split(/&amp;/).join("&").split(/&Uuml;/).join("Ü")
 
     return(
-      <div>
-          <h3>{this.props.fixText(this.props.question)}</h3>
+      <div className='content'>
+          <div className='header'>{this.props.fixText(this.props.question)}</div>
       </div>
     )
   }

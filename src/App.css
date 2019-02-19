@@ -2,14 +2,9 @@
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
 .App-header {
   background-color: #222;
-  height: 150px;
+  height: 200px;
   padding: 20px;
   color: white;
 }
@@ -25,4 +20,28 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+.cardContainer, .scoreContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+
+.questionContainer {
+  padding: 50px 100px 0 100px;
+}
+
+.search {
+  padding: 20px 0 0 0;
+}
+
+.image {
+  max-height: 200px;
+  min-height: 200px;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  max-height: 80px;
 }
