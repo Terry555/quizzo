@@ -1,3 +1,7 @@
+body {
+  background-color: #ff4d4d;
+}
+
 .App {
   text-align: center;
 }
@@ -7,10 +11,20 @@
   height: 200px;
   padding: 20px;
   color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  max-height: 80px;
 }
 
 .App-title {
-  font-size: 1.5em;
+  font-size: 2.5em;
+  display: flex;
+  justify-content: center;
 }
 
 .App-intro {
@@ -39,9 +53,4 @@
 .image {
   max-height: 200px;
   min-height: 200px;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  max-height: 80px;
 }
